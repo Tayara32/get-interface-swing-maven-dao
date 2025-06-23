@@ -1,11 +1,10 @@
 package view;
 
+import model.Utilizador;
+
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * Janela gráfica de login do sistema GET.
- */
 public class LoginView extends JFrame {
 
     private final JTextField txtUtilizador;
@@ -30,19 +29,15 @@ public class LoginView extends JFrame {
         txtPalavraChave = new JPasswordField();
         painel.add(txtPalavraChave);
 
-        painel.add(new JLabel("")); // Alinhamento
+        painel.add(new JLabel(""));
         btnEntrar = new JButton("Entrar");
         painel.add(btnEntrar);
 
         setContentPane(painel);
     }
 
-    public String getUtilizador() {
-        return txtUtilizador.getText();
-    }
-
-    public String getPalavraChave() {
-        return new String(txtPalavraChave.getPassword());
+    public Utilizador getDadosLogin() {
+        return new Utilizador(txtUtilizador.getText(), new String(txtPalavraChave.getPassword()));
     }
 
     public JButton getBtnEntrar() {

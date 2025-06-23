@@ -1,20 +1,24 @@
 package model;
 
-/**
- * Classe que representa um Utilizador do sistema.
- */
 public class Utilizador {
 
+    private int id;
     private String utilizador;
     private String palavraChave;
 
-    public Utilizador() {
-        // Construtor vazio
-    }
+    public Utilizador() {}
 
     public Utilizador(String utilizador, String palavraChave) {
         this.utilizador = utilizador;
         this.palavraChave = palavraChave;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUtilizador() {
