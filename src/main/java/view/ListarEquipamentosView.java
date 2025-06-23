@@ -90,4 +90,12 @@ public class ListarEquipamentosView extends JFrame {
     public DefaultTableModel getModeloTabela() {
         return (DefaultTableModel) tabela.getModel();
     }
+
+    /**
+     * Mostra uma mensagem de informação ao utilizador.
+     * Este método é utilizado no controlador para apresentar erros ou alertas.
+     */
+    public void mostrarMensagem(String mensagem) {
+        JOptionPane.showMessageDialog(this, mensagem);
+    }
 }

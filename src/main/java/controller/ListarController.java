@@ -1,6 +1,12 @@
 package controller;
 
+import dao.EquipamentoDAO;
+import model.Equipamento;
+import util.ConexaoBD;
 import view.ListarEquipamentosView;
+
+import javax.swing.table.DefaultTableModel;
+import java.util.List;
 
 /**
  * Controlador responsável por gerir a janela de listagem de equipamentos.
@@ -14,6 +20,15 @@ public class ListarController {
         listarView.setVisible(true);
 
         //Logica de listagem aqui
+
+
+
+        if (ConexaoBD.obterLigacao() == null) {
+            listarView.mostrarMensagem("Erro na ligação à base de dados.");
+            return;
+        }
+
+        carregarEquipamentos();
 
         // Ação do botão "Voltar" → fecha esta janela e abre novamente o Menu
         listarView.adicionarAcaoVoltar(e -> {
@@ -32,5 +47,27 @@ public class ListarController {
         // Ação do botão "Filtrar" (por implementar)
         listarView.adicionarAcaoFiltrar(e ->
                 System.out.println("Filtrar ainda não implementado."));
+    }
+
+    private void carregarEquipamentos() {
+        try {
+            EquipamentoDAO dao = new EquipamentoDAO(); // Sem conn
+            List<Equipamento> lista = dao.listarEquipamentos();
+
+            DefaultTableModel modelo = (DefaultTableModel) listarView.getTabela().getModel();
+            modelo.setRowCount(0);
+
+            for (Equipamento eq : lista) {
+                modelo.addRow(new Object[]{
+                        eq.getNome(),
+                        eq.getEstado().getDescricao(),
+                        eq.getSala(),
+                        eq.getResponsavel().getUtilizador()
+                });
+            }
+
+        } catch (Exception ex) {
+            listarView.mostrarMensagem("Erro ao carregar dados: " + ex.getMessage());
+        }
     }
 }
