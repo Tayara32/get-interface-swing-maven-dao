@@ -36,9 +36,7 @@ public class InserirEquipamentoView extends JFrame {
         painel.add(txtNome);
 
         painel.add(new JLabel("Estado:"));
-        EstadoDAO estadoDao = new EstadoDAO();
-        List<Estado> estados = estadoDao.listarEstados();
-        cbEstado = new JComboBox<>(estados.toArray(new Estado[0]));
+        cbEstado = new JComboBox<>();
         painel.add(cbEstado);
 
         painel.add(new JLabel("Sala:"));

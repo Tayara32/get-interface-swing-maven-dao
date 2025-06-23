@@ -39,8 +39,13 @@ public class Estado {
     }
 
     public void setId(int estadoId) {
+        this.id = estadoId;
     }
 
     public void setDescricao(String estadoDesc) {
+        this.descricao = estadoDesc;
     }
+
+
+
 }

@@ -31,6 +31,7 @@ public class LoginController {
                 JOptionPane.showMessageDialog(loginView, "Login bem-sucedido!");
                 loginView.dispose();
                 new MenuController(); // Entrar no menu principal
+                new EstadoController();
             } else {
                 JOptionPane.showMessageDialog(loginView, "Credenciais inválidas.");
             }
