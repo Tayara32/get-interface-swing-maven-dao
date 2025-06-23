@@ -12,6 +12,12 @@ target/
 *.iml
 *.ipr
 
+# Arquivo de configuração do banco (segredo!)
+src/main/resources/config.properties
+
+# Ignorar o POM se quiser manter privado ou alternativo
+pom.xml
+
 ### Eclipse ###
 .apt_generated
 .classpath

@@ -21,7 +21,7 @@ public class EquipamentoDAO {
      * Insere um novo equipamento na base de dados.
      */
     public boolean inserirEquipamento(Equipamento equipamento) {
-        String sql = "INSERT INTO equipamento (nome, estado_id, sala, responsavel_id) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO equipamento (nome, estado_id, sala, responsavel_id, numero_serie, data_aquisicao) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = ConexaoBD.obterLigacao();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -30,6 +30,8 @@ public class EquipamentoDAO {
             stmt.setInt(2, equipamento.getEstado().getId());
             stmt.setString(3, equipamento.getSala());
             stmt.setInt(4, equipamento.getResponsavel().getId());
+            stmt.setString(5, equipamento.getNumeroSerie());
+            stmt.setDate(6, java.sql.Date.valueOf(equipamento.getDataAquisicao()));
 
             stmt.executeUpdate();
             return true;
@@ -47,7 +49,7 @@ public class EquipamentoDAO {
         List<Equipamento> lista = new ArrayList<>();
 
         String sql = """
-            SELECT e.nome, e.sala,
+            SELECT e.nome, e.sala, e.numero_serie, e.data_aquisicao,
                    est.id AS estado_id, est.descricao AS estado_desc,
                    u.id AS user_id, u.utilizador AS user_nome
             FROM equipamento e

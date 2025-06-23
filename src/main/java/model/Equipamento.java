@@ -8,24 +8,27 @@ import java.time.LocalDate;
 public class Equipamento {
 
     // Atributo que guarda o nome do equipamento (ex: "Portátil HP", "Switch 24 portas", etc.)
-    private final String nome;
+    private  String nome;
 
     // Atributo que guarda o estado do equipamento, do tipo enum Estado (ex: ATIVO, REPARACAO, RESERVADO)
-    private final Estado estado;
+    private  Estado estado;
 
     // Atributo que indica a sala onde o equipamento está localizado (ex: "Sala 2.1")
-    private final String sala;
+    private  String sala;
 
     // Atributo que representa o responsável associado ao equipamento, do tipo Utilizador
-    private final Utilizador responsavel;
+    private  Utilizador responsavel;
 
     //Atributo que representa o número de sério do equipamento
-    private final String numeroSerie;
+    private  String numeroSerie;
 
     //Atributo que representa a data de aquisição do equipamento
-    private final LocalDate dataAquisicao;
+    private  LocalDate dataAquisicao;
 
 
+    // Construtor vazio (necessário para algumas bibliotecas e frameworks, como o JDBC)
+    public Equipamento() {
+    }
 
     // Construtor da classe que inicializa todos os atributos do equipamento ao ser criado
     public Equipamento(String nome, Estado estado, String sala, Utilizador responsavel, String numeroSerie, LocalDate dataAquisicao) {
@@ -64,5 +67,29 @@ public class Equipamento {
 
     public LocalDate getDataAquisicao() {
         return dataAquisicao;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    public void setSala(String sala) {
+        this.sala = sala;
+    }
+
+    public void setResponsavel(Utilizador responsavel) {
+        this.responsavel = responsavel;
+    }
+
+    public void setNumeroSerie(String numeroSerie) {
+        this.numeroSerie = numeroSerie;
+    }
+
+    public void setDataAquisicao(LocalDate dataAquisicao) {
+        this.dataAquisicao = dataAquisicao;
     }
 }

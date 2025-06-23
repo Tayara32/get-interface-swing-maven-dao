@@ -5,10 +5,15 @@ package model;
 public class Estado {
 
     // Identificador numérico do estado (ex: 1, 2, 3), pode ser usado para guardar na base de dados
-    private final int id;
+    private int id;
 
     // Descrição textual do estado (ex: "Ativo", "Em Reparação", "Reservado")
-    private final String descricao;
+    private String descricao;
+
+
+    // Construtor vazio necessário para DAO (ex: new Estado(); seguido de setters)
+    public Estado() {}
+
 
     // Construtor da classe que recebe o id e a descrição do estado
     public Estado(int id, String descricao) {
@@ -31,5 +36,11 @@ public class Estado {
     @Override
     public String toString() {
         return descricao;
+    }
+
+    public void setId(int estadoId) {
+    }
+
+    public void setDescricao(String estadoDesc) {
     }
 }
