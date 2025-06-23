@@ -1,5 +1,6 @@
 package view;
 
+import dao.EstadoDAO;
 import model.Estado;
 import model.Utilizador;
 
@@ -7,6 +8,7 @@ import model.Utilizador;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class InserirEquipamentoView extends JFrame {
 
@@ -34,7 +36,9 @@ public class InserirEquipamentoView extends JFrame {
         painel.add(txtNome);
 
         painel.add(new JLabel("Estado:"));
-        cbEstado = new JComboBox<>();
+        EstadoDAO estadoDao = new EstadoDAO();
+        List<Estado> estados = estadoDao.listarEstados();
+        cbEstado = new JComboBox<>(estados.toArray(new Estado[0]));
         painel.add(cbEstado);
 
         painel.add(new JLabel("Sala:"));
