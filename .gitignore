@@ -18,6 +18,8 @@ src/main/resources/config.properties
 # Ignorar o POM se quiser manter privado ou alternativo
 pom.xml
 
+hs_err_*
+
 ### Eclipse ###
 .apt_generated
 .classpath
