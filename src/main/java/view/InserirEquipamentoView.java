@@ -13,7 +13,7 @@ import java.util.List;
 public class InserirEquipamentoView extends JFrame {
 
     private final JTextField txtNome;
-    private final JComboBox<Estado> cbEstado;
+    private final JComboBox<Estado> comboEstado;
     private final JTextField txtSala;
     private final JComboBox<Utilizador> cbResponsavel;
     private final JButton btnInserir;
@@ -36,8 +36,8 @@ public class InserirEquipamentoView extends JFrame {
         painel.add(txtNome);
 
         painel.add(new JLabel("Estado:"));
-        cbEstado = new JComboBox<>();
-        painel.add(cbEstado);
+        comboEstado = new JComboBox<>();
+        painel.add(comboEstado);
 
         painel.add(new JLabel("Sala:"));
         txtSala = new JTextField();
@@ -60,7 +60,7 @@ public class InserirEquipamentoView extends JFrame {
         painel.add(btnVoltar);
         painel.add(btnInserir);
 
-        setContentPane(painel);
+        add(painel);
     }
 
     // Getters
@@ -68,8 +68,8 @@ public class InserirEquipamentoView extends JFrame {
         return txtNome;
     }
 
-    public JComboBox<Estado> getCbEstado() {
-        return cbEstado;
+    public JComboBox<Estado> getComboEstado() {
+        return comboEstado;
     }
 
     public JTextField getTxtSala() {
@@ -80,11 +80,13 @@ public class InserirEquipamentoView extends JFrame {
         return cbResponsavel;
     }
 
-    public void adicionarAcaoInserir(ActionListener listener) {
-        btnInserir.addActionListener(listener);
+
+    public JButton getBtnInserir() {
+        return btnInserir;
     }
 
-    public void adicionarAcaoVoltar(ActionListener listener) {
-        btnVoltar.addActionListener(listener);
+    public JButton getBtnVoltar() {
+        return btnVoltar;
     }
+
 }
