@@ -3,7 +3,7 @@
 package main;
 
 // Importa a classe LoginController, que será responsável por abrir a interface de login
-import controller.EstadoController;
+//import controller.EstadoController;
 import controller.LoginController;
 
 // Declaração da classe principal da aplicação

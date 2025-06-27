@@ -14,10 +14,11 @@ import java.util.List;
 public class ListarController {
 
     private final ListarEquipamentosView listarView;
-
+    private int idResponsavel;
     public ListarController() {
         listarView = new ListarEquipamentosView();
         listarView.setVisible(true);
+
 
         //Logica de listagem aqui
 

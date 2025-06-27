@@ -1,9 +1,11 @@
 package view;
 
 import model.Utilizador;
+import controller.LoginController;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 public class LoginView extends JFrame {
 
@@ -11,14 +13,14 @@ public class LoginView extends JFrame {
     private final JPasswordField txtPalavraChave;
     private final JButton btnEntrar;
 
-    public LoginView() {
+    public LoginView(LoginController controller) {
         setTitle("Login - GET");
-        setSize(350, 220);
+        setSize(350, 270);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
 
-        JPanel painel = new JPanel(new GridLayout(3, 2, 10, 10));
+        JPanel painel = new JPanel(new GridLayout(4, 2, 10, 10));
         painel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         painel.add(new JLabel("Utilizador (Email):"));
@@ -32,6 +34,13 @@ public class LoginView extends JFrame {
         painel.add(new JLabel(""));
         btnEntrar = new JButton("Entrar");
         painel.add(btnEntrar);
+
+        painel.add(new JLabel(""));
+        JButton botaoAbrirInterface = new JButton("Abrir Interface Swing");
+        botaoAbrirInterface.addActionListener((ActionEvent e) -> {
+            controller.abrirInterfaceExemplo();
+        });
+        painel.add(botaoAbrirInterface);
 
         setContentPane(painel);
     }

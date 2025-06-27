@@ -6,6 +6,7 @@ public class MenuController {
 
     private final MenuView menuView;
 
+
     public MenuController() {
         menuView = new MenuView();
         menuView.setVisible(true);
