@@ -5,6 +5,7 @@ public class Utilizador {
     private int id;
     private String utilizador;
     private String palavraChave;
+    private int perfil_id;
 
     public Utilizador() {}
 
@@ -19,6 +20,14 @@ public class Utilizador {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getPerfil_id() {
+        return perfil_id;
+    }
+
+    public void setPerfil_id(int perfil_id) {
+        this.perfil_id = perfil_id;
     }
 
     public String getUtilizador() {

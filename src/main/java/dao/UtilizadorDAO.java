@@ -35,6 +35,7 @@ public class UtilizadorDAO {
                     // Se existir um registo válido, devolve objeto Utilizador com ‘ID’
                     Utilizador utilizador = new Utilizador();
                     utilizador.setId(rs.getInt("id"));  // Pega o ID da BD
+                    utilizador.setPerfil_id(rs.getInt("perfil_id"));
                     utilizador.setUtilizador(rs.getString("utilizador"));
                     utilizador.setPalavraChave(rs.getString("palavra_chave"));
 
