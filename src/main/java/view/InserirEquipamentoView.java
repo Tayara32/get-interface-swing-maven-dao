@@ -9,6 +9,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.List;
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
+import java.util.Properties;
+
 
 public class InserirEquipamentoView extends JFrame {
 
@@ -19,17 +24,21 @@ public class InserirEquipamentoView extends JFrame {
     private final JButton btnInserir;
     private final JButton btnVoltar;
     private final JTextField numeroSerie;
-    private final JTextField dataAquisicao;
+    private final JDatePickerImpl dataAquisicao;
 
     public InserirEquipamentoView() {
         setTitle("Inserir Equipamento");
-        setSize(400, 350);
+        setSize(450, 400);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
 
-        JPanel painel = new JPanel(new GridLayout(7, 2, 10, 10));
+        JPanel painel = new JPanel(new GridLayout(8, 2, 12, 10));
         painel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        painel.add(new JLabel("Hello"));
+        painel.add(new JLabel("Hello"));
+
 
         painel.add(new JLabel("Nome:"));
         txtNome = new JTextField();
@@ -51,9 +60,17 @@ public class InserirEquipamentoView extends JFrame {
         numeroSerie = new JTextField(20);
         painel.add(numeroSerie);
 
+        UtilDateModel model = new UtilDateModel();
+        Properties p = new Properties();
+        p.put("text.today", "Hoje");
+        p.put("text.month", "Mês");
+        p.put("text.year", "Ano");
+
         painel.add(new JLabel("Data de Aquisição:"));
-        dataAquisicao = new JTextField(20);
+        JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
+        dataAquisicao = new JDatePickerImpl(datePanel, new DateLabelFormatter());
         painel.add(dataAquisicao);
+
 
         btnVoltar = new JButton("Voltar");
         btnInserir = new JButton("Inserir");
