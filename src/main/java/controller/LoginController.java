@@ -41,4 +41,5 @@ public class LoginController {
         new InterfaceWidgetsView(loginView); // Passa a referência da janela login
         loginView.setVisible(false);         // Esconde temporariamente
     }
+
 }

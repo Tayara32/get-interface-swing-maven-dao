@@ -20,7 +20,7 @@ public class LoginView extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
 
-        JPanel painel = new JPanel(new GridLayout(4, 2, 10, 10));
+        JPanel painel = new JPanel(new GridLayout(4, 3, 10, 10));
         painel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         painel.add(new JLabel("Utilizador (Email):"));
@@ -35,12 +35,18 @@ public class LoginView extends JFrame {
         btnEntrar = new JButton("Entrar");
         painel.add(btnEntrar);
 
-        painel.add(new JLabel(""));
+        //painel.add(new JLabel(""));
         JButton botaoAbrirInterface = new JButton("Abrir Interface Swing");
         botaoAbrirInterface.addActionListener((ActionEvent e) -> {
             controller.abrirInterfaceExemplo();
         });
         painel.add(botaoAbrirInterface);
+
+        JButton btnCalendario = new JButton("Calendário");
+        btnCalendario.addActionListener(e -> {
+            new CalendarioView();
+        });
+        painel.add(btnCalendario);
 
         setContentPane(painel);
     }
