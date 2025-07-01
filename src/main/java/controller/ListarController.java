@@ -62,10 +62,11 @@ public class ListarController {
                 modelo.addRow(new Object[]{
                         eq.getNome(),
                         eq.getEstado().getDescricao(),
-                        eq.getSala(),
-//                        eq.getResponsavel().getUtilizador(),
                         eq.getNumeroSerie(),
-                        eq.getDataAquisicao()
+                        eq.getDataAquisicao(),
+                        eq.getSala()
+//                        eq.getResponsavel().getUtilizador(),
+
                 });
             }
 

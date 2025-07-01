@@ -21,17 +21,18 @@ public class EquipamentoDAO {
      * Insere um novo equipamento na base de dados.
      */
     public boolean inserirEquipamento(Equipamento equipamento) {
-        String sql = "INSERT INTO equipamento (nome, estado_id, sala, numero_serie, data_aquisicao) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO equipamento (nome, estado_id, numero_serie, data_aquisicao, sala) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conn = ConexaoBD.obterLigacao();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, equipamento.getNome());
             stmt.setInt(2, equipamento.getEstado().getId());
-            stmt.setString(3, equipamento.getSala());
+            stmt.setString(3, equipamento.getNumeroSerie());
+            stmt.setDate(4, java.sql.Date.valueOf(equipamento.getDataAquisicao()));
+            stmt.setString(5, equipamento.getSala());
 //            stmt.setInt(4, equipamento.getResponsavel().getId());
-            stmt.setString(4, equipamento.getNumeroSerie());
-            stmt.setDate(5, java.sql.Date.valueOf(equipamento.getDataAquisicao()));
+
 
             stmt.executeUpdate();
             return true;
@@ -62,9 +63,9 @@ public class EquipamentoDAO {
             while (rs.next()) {
                 Equipamento equipamento = new Equipamento();
                 equipamento.setNome(rs.getString("nome"));
-                equipamento.setSala(rs.getString("sala"));
                 equipamento.setNumeroSerie(rs.getString("numero_serie"));
                 equipamento.setDataAquisicao(rs.getDate("data_aquisicao").toLocalDate());
+                equipamento.setSala(rs.getString("sala"));
 
                 Estado estado = new Estado();
                 estado.setId(rs.getInt("estado_id"));
