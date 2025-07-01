@@ -1,14 +1,12 @@
 package view;
 
-import dao.EstadoDAO;
 import model.Estado;
-import model.Utilizador;
 
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.util.List;
+
+import model.Utilizador;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
@@ -26,7 +24,7 @@ public class InserirEquipamentoView extends JFrame {
     private final JTextField numeroSerie;
     private final JDatePickerImpl dataAquisicao;
 
-    public InserirEquipamentoView() {
+    public InserirEquipamentoView(Utilizador utilizador) {
         setTitle("Inserir Equipamento");
         setSize(450, 400);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -36,8 +34,8 @@ public class InserirEquipamentoView extends JFrame {
         JPanel painel = new JPanel(new GridLayout(8, 2, 12, 10));
         painel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        painel.add(new JLabel("Hello"));
-        painel.add(new JLabel("Hello"));
+        painel.add(new JLabel("Utilizador: " + utilizador.getUtilizador()));
+        painel.add(new JLabel("Perfil: " + utilizador.getPerfil_id()));
 
 
         painel.add(new JLabel("Nome:"));

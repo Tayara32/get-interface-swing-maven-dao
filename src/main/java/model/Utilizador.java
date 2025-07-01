@@ -50,4 +50,7 @@ public class Utilizador {
         return utilizador != null && !utilizador.isEmpty()
                 && palavraChave != null && !palavraChave.isEmpty();
     }
+
+
+
 }

@@ -17,12 +17,14 @@ public class InserirController {
 
     private InserirEquipamentoView view; //
     private int idResponsavel; // ID do utilizador que criou o registo
+    private Utilizador utilizador;
 
 
-    public InserirController() {
+    public InserirController(Utilizador utilizador) {
        // this.view = view;
        // this.idResponsavel = idResponsavel;
-        this.view = new InserirEquipamentoView();
+        this.utilizador = utilizador;
+        this.view = new InserirEquipamentoView(utilizador);
 
         carregarEstados();
         configurarBotaoInserir();
@@ -99,7 +101,7 @@ public class InserirController {
                         JOptionPane.INFORMATION_MESSAGE);
 
                 view.dispose();
-                new MenuController(); // voltar ao menu
+                new MenuController(utilizador); // voltar ao menu
             } else {
                 JOptionPane.showMessageDialog(view,
                         "Erro ao inserir equipamento.",
@@ -115,7 +117,7 @@ public class InserirController {
     private void configurarBotaoVoltar() {
         view.getBtnVoltar().addActionListener(_ -> {
             view.dispose();
-            new MenuController(); // volta ao menu
+            new MenuController(utilizador); // volta ao menu
         });
     }
 }

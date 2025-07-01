@@ -2,6 +2,7 @@ package controller;
 
 import dao.EquipamentoDAO;
 import model.Equipamento;
+import model.Utilizador;
 import util.ConexaoBD;
 import view.ListarEquipamentosView;
 
@@ -15,7 +16,10 @@ public class ListarController {
 
     private final ListarEquipamentosView listarView;
     private int idResponsavel;
-    public ListarController() {
+    private Utilizador utilizador;
+
+    public ListarController(Utilizador utilizador) {
+        this.utilizador = utilizador;
         listarView = new ListarEquipamentosView();
         listarView.setVisible(true);
 
@@ -34,7 +38,7 @@ public class ListarController {
         // Ação do botão "Voltar" → fecha esta janela e abre novamente o Menu
         listarView.adicionarAcaoVoltar(e -> {
             listarView.dispose();        // Fecha a janela atual de listagem
-            new MenuController();        // Volta ao menu principal
+            new MenuController(utilizador);        // Volta ao menu principal
         });
 
         // Ação do botão "Editar" (por implementar)

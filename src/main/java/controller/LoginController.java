@@ -29,7 +29,7 @@ public class LoginController {
             if (utilizadorAutenticado != null) {
                 JOptionPane.showMessageDialog(loginView, "Login bem-sucedido!");
                 loginView.dispose();
-                new MenuController();
+                new MenuController(utilizadorAutenticado);
             } else {
                 JOptionPane.showMessageDialog(loginView, "Credenciais inválidas.");
             }
