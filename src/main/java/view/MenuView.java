@@ -10,7 +10,7 @@ public class MenuView extends JFrame {
     private final JButton btnLogout;
 
     public MenuView() {
-        setTitle("Menu Principal - GET");
+        setTitle("Menu Principal - JavaTech");
         setSize(300, 200);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);

@@ -20,7 +20,7 @@ public class InserirEquipamentoView extends JFrame {
     private final JTextField txtNome;
     private final JComboBox<Estado> comboEstado;
     private final JTextField txtSala;
-    private final JComboBox<Utilizador> cbResponsavel;
+//    private final JComboBox<Utilizador> cbResponsavel;
     private final JButton btnInserir;
     private final JButton btnVoltar;
     private final JTextField numeroSerie;
@@ -52,9 +52,9 @@ public class InserirEquipamentoView extends JFrame {
         txtSala = new JTextField();
         painel.add(txtSala);
 
-        painel.add(new JLabel("Responsável:"));
-        cbResponsavel = new JComboBox<>();
-        painel.add(cbResponsavel);
+//        painel.add(new JLabel("Responsável:"));
+//        cbResponsavel = new JComboBox<>();
+//        painel.add(cbResponsavel);
 
         painel.add(new JLabel("Número de Série:"));
         numeroSerie = new JTextField(20);
@@ -92,10 +92,17 @@ public class InserirEquipamentoView extends JFrame {
     public JTextField getTxtSala() {
         return txtSala;
     }
-
-    public JComboBox<Utilizador> getCbResponsavel() {
-        return cbResponsavel;
+    public JTextField getNumeroSerie() {
+        return numeroSerie;
     }
+
+    public JDatePickerImpl getDataAquisicao() {
+        return dataAquisicao;
+    }
+
+//    public JComboBox<Utilizador> getCbResponsavel() {
+//        return cbResponsavel;
+//    }
 
 
     public JButton getBtnInserir() {

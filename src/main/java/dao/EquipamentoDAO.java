@@ -21,7 +21,7 @@ public class EquipamentoDAO {
      * Insere um novo equipamento na base de dados.
      */
     public boolean inserirEquipamento(Equipamento equipamento) {
-        String sql = "INSERT INTO equipamento (nome, estado_id, sala, responsavel_id, numero_serie, data_aquisicao) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO equipamento (nome, estado_id, sala, numero_serie, data_aquisicao) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conn = ConexaoBD.obterLigacao();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -29,9 +29,9 @@ public class EquipamentoDAO {
             stmt.setString(1, equipamento.getNome());
             stmt.setInt(2, equipamento.getEstado().getId());
             stmt.setString(3, equipamento.getSala());
-            stmt.setInt(4, equipamento.getResponsavel().getId());
-            stmt.setString(5, equipamento.getNumeroSerie());
-            stmt.setDate(6, java.sql.Date.valueOf(equipamento.getDataAquisicao()));
+//            stmt.setInt(4, equipamento.getResponsavel().getId());
+            stmt.setString(4, equipamento.getNumeroSerie());
+            stmt.setDate(5, java.sql.Date.valueOf(equipamento.getDataAquisicao()));
 
             stmt.executeUpdate();
             return true;
@@ -49,12 +49,10 @@ public class EquipamentoDAO {
         List<Equipamento> lista = new ArrayList<>();
 
         String sql = """
-            SELECT e.nome, e.sala, e.numero_serie, e.data_aquisicao,
-                   est.id AS estado_id, est.descricao AS estado_desc,
-                   u.id AS user_id, u.utilizador AS user_nome
+          SELECT e.nome, e.sala, e.numero_serie, e.data_aquisicao,
+                   est.id AS estado_id, est.descricao AS estado_desc
             FROM equipamento e
             INNER JOIN estado est ON e.estado_id = est.id
-            INNER JOIN utilizador u ON e.responsavel_id = u.id
         """;
 
         try (Connection conn = ConexaoBD.obterLigacao();
@@ -65,16 +63,18 @@ public class EquipamentoDAO {
                 Equipamento equipamento = new Equipamento();
                 equipamento.setNome(rs.getString("nome"));
                 equipamento.setSala(rs.getString("sala"));
+                equipamento.setNumeroSerie(rs.getString("numero_serie"));
+                equipamento.setDataAquisicao(rs.getDate("data_aquisicao").toLocalDate());
 
                 Estado estado = new Estado();
                 estado.setId(rs.getInt("estado_id"));
                 estado.setDescricao(rs.getString("estado_desc"));
                 equipamento.setEstado(estado);
 
-                Utilizador utilizador = new Utilizador();
-                utilizador.setUtilizador(rs.getString("user_nome")); // Nome do responsável
-                utilizador.setId(rs.getInt("user_id"));              // ‘ID’ do responsável
-                equipamento.setResponsavel(utilizador);
+//                Utilizador utilizador = new Utilizador();
+//                utilizador.setUtilizador(rs.getString("user_nome")); // Nome do responsável
+//                utilizador.setId(rs.getInt("user_id"));              // ‘ID’ do responsável
+//                equipamento.setResponsavel(utilizador);
 
                 lista.add(equipamento);
             }

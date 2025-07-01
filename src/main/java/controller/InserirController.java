@@ -2,12 +2,14 @@ package controller;
 
 import dao.EstadoDAO;
 import dao.EquipamentoDAO;
+import org.jdatepicker.impl.JDatePickerImpl;
 import view.InserirEquipamentoView;
 import model.Estado;
 import model.Equipamento;
 import model.Utilizador;
 
 import javax.swing.*;
+import java.time.LocalDate;
 import java.util.List;
 
 public class InserirController {
@@ -52,8 +54,10 @@ public class InserirController {
             String nome = view.getTxtNome().getText().trim();
             Estado estadoSelecionado = (Estado) view.getComboEstado().getSelectedItem();
             String sala = view.getTxtSala().getText().trim();
+            String numeroDeSerie = view.getNumeroSerie().getText().trim();
+            JDatePickerImpl datePicker = view.getDataAquisicao();
 
-            if (nome.isEmpty() || estadoSelecionado == null || sala.isEmpty()) {
+            if (nome.isEmpty() || estadoSelecionado == null || sala.isEmpty() || numeroDeSerie.isEmpty()) {
                 JOptionPane.showMessageDialog(view,
                         "Por favor, preencha todos os campos antes de inserir.",
                         "Campos obrigatórios",
@@ -61,16 +65,30 @@ public class InserirController {
                 return;
             }
 
+            //Calendário para inserir a data de aquisição
+            java.util.Date selectedDate = (java.util.Date) datePicker.getModel().getValue();
+            if(selectedDate == null) {
+                JOptionPane.showMessageDialog(view,
+                        "Por favor, selecione uma data de aquisição válida.",
+                        "Data obrigatória",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            LocalDate dataAquisicao = selectedDate.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
+
             // Criar o objeto Equipamento
             Equipamento eq = new Equipamento();
             eq.setNome(nome);
             eq.setEstado(estadoSelecionado);
             eq.setSala(sala);
+            eq.setNumeroSerie(numeroDeSerie);
+            eq.setDataAquisicao(dataAquisicao);
 
             // Responsável atual
-            Utilizador resp = new Utilizador();
-            resp.setId(idResponsavel);
-            eq.setResponsavel(resp);
+//            Utilizador resp = new Utilizador();
+//            resp.setId(idResponsavel);
+//            eq.setResponsavel(resp);
 
             // Inserir na base de dados
             boolean sucesso = new EquipamentoDAO().inserirEquipamento(eq);

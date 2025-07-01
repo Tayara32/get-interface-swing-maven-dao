@@ -14,14 +14,21 @@ public class LoginView extends JFrame {
     private final JButton btnEntrar;
 
     public LoginView(LoginController controller) {
-        setTitle("Login - GET");
+        setTitle("Login - JavaTech");
         setSize(350, 270);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
 
-        JPanel painel = new JPanel(new GridLayout(4, 3, 10, 10));
-        painel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        JPanel titulo = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        JLabel tituloLabel = new JLabel("JavaTech Equipamentos");
+        tituloLabel.setFont(new Font(tituloLabel.getFont().getFontName(), Font.BOLD, 18));
+        titulo.add(tituloLabel);
+
+
+        JPanel painel = new JPanel(new GridLayout(4,2, 10, 10));
+        painel.setBorder(BorderFactory.createEmptyBorder(20, 20, 10, 20));
+
 
         painel.add(new JLabel("Utilizador (Email):"));
         txtUtilizador = new JTextField();
@@ -35,20 +42,25 @@ public class LoginView extends JFrame {
         btnEntrar = new JButton("Entrar");
         painel.add(btnEntrar);
 
-        //painel.add(new JLabel(""));
-        JButton botaoAbrirInterface = new JButton("Abrir Interface Swing");
-        botaoAbrirInterface.addActionListener((ActionEvent e) -> {
-            controller.abrirInterfaceExemplo();
-        });
-        painel.add(botaoAbrirInterface);
+//        Caso seja preciso utilizar calendário e aceder outro tipo de interface
+//        //painel.add(new JLabel(""));
+//        JButton botaoAbrirInterface = new JButton("Abrir Interface Swing");
+//        botaoAbrirInterface.addActionListener((ActionEvent e) -> {
+//            controller.abrirInterfaceExemplo();
+//        });
+//        painel.add(botaoAbrirInterface);
+//
+//        JButton btnCalendario = new JButton("Calendário");
+//        btnCalendario.addActionListener(e -> {
+//            new CalendarioView();
+//        });
+//        painel.add(btnCalendario);
 
-        JButton btnCalendario = new JButton("Calendário");
-        btnCalendario.addActionListener(e -> {
-            new CalendarioView();
-        });
-        painel.add(btnCalendario);
+        JPanel painelPrincipal = new JPanel(new BorderLayout());
+        painelPrincipal.add(titulo, BorderLayout.NORTH);
+        painelPrincipal.add(painel, BorderLayout.CENTER);
 
-        setContentPane(painel);
+        setContentPane(painelPrincipal);
     }
 
     public Utilizador getDadosLogin() {

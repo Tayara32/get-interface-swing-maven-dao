@@ -63,7 +63,9 @@ public class ListarController {
                         eq.getNome(),
                         eq.getEstado().getDescricao(),
                         eq.getSala(),
-                        eq.getResponsavel().getUtilizador()
+//                        eq.getResponsavel().getUtilizador(),
+                        eq.getNumeroSerie(),
+                        eq.getDataAquisicao()
                 });
             }
 

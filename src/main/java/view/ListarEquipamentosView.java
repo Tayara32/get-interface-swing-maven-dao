@@ -38,7 +38,7 @@ public class ListarEquipamentosView extends JFrame {
 
         // Criação da tabela com colunas definidas
         tabela = new JTable(new DefaultTableModel(
-                new Object[]{"Nome", "Estado", "Número de Série", "Data de Aquisição", "Sala", "Responsável"}, 0));
+                new Object[]{"Nome", "Estado", "Número de Série", "Data de Aquisição", "Sala"}, 0));
         JScrollPane scroll = new JScrollPane(tabela);       // Adiciona scroll à tabela
 
         // Painel inferior com os botões de ação
