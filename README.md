@@ -94,6 +94,8 @@ O sistema foi desenvolvido em **Java**, utilizando **Swing** para a interface gr
 
 ![Login](assets/images/login.png)
 
+![Menu](assets/images/menu.png)
+
 ![Inserir Equipamentos](assets/images/inserir.png)
 
 ![Listar Equipamentos](assets/images/listar.png)
