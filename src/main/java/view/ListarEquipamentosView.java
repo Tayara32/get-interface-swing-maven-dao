@@ -2,6 +2,8 @@ package view;
 
 // Importa todas as classes do pacote javax.swing, utilizadas para construir interfaces gráficas em Java
 // Inclui componentes como JFrame, JPanel, JButton, JLabel, JTextField, JTable, JScrollPane, etc.
+import util.IconeUtil;
+
 import javax.swing.*;
 
 // Importa a classe DefaultTableModel, usada para gerir os dados que aparecem numa JTable
@@ -32,6 +34,7 @@ public class ListarEquipamentosView extends JFrame {
     public ListarEquipamentosView() {
         setTitle("Lista de Equipamentos");                  // Define o título da janela
         setSize(700, 400);                                  // Define o tamanho da janela
+        IconeUtil.aplicarIcone(this);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);         // Fecha apenas esta janela ao clicar em X
         setLocationRelativeTo(null);                        // Centraliza a janela no ecrã
         setResizable(false);                                // Impede redimensionamento
@@ -41,8 +44,12 @@ public class ListarEquipamentosView extends JFrame {
                 new Object[]{"Nome", "Estado", "Número de Série", "Data de Aquisição", "Sala"}, 0));
         JScrollPane scroll = new JScrollPane(tabela);       // Adiciona scroll à tabela
 
+
+
+
         // Painel inferior com os botões de ação
         JPanel painelBotoes = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        painelBotoes.setBackground(new Color(100, 169, 220, 255));
 
         // Instanciação dos botões
         btnEditar = new JButton("Editar");

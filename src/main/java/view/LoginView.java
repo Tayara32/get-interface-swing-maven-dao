@@ -2,6 +2,7 @@ package view;
 
 import model.Utilizador;
 import controller.LoginController;
+import util.IconeUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,6 +17,7 @@ public class LoginView extends JFrame {
     public LoginView(LoginController controller) {
         setTitle("Login - JavaTech");
         setSize(350, 270);
+        IconeUtil.aplicarIcone(this);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -24,10 +26,15 @@ public class LoginView extends JFrame {
         JLabel tituloLabel = new JLabel("JavaTech Equipamentos");
         tituloLabel.setFont(new Font(tituloLabel.getFont().getFontName(), Font.BOLD, 18));
         titulo.add(tituloLabel);
+        titulo.setBackground(new Color(100, 169, 220, 255));
+        tituloLabel.setForeground(new Color(255,100,50));
+
 
 
         JPanel painel = new JPanel(new GridLayout(4,2, 10, 10));
         painel.setBorder(BorderFactory.createEmptyBorder(20, 20, 10, 20));
+        painel.setOpaque(false); // torna o painel transparente para mostrar o fundo do painel principal
+
 
 
         painel.add(new JLabel("Utilizador (Email):"));
@@ -59,6 +66,7 @@ public class LoginView extends JFrame {
         JPanel painelPrincipal = new JPanel(new BorderLayout());
         painelPrincipal.add(titulo, BorderLayout.NORTH);
         painelPrincipal.add(painel, BorderLayout.CENTER);
+        painelPrincipal.setBackground(new Color(100, 169, 220, 255));
 
         setContentPane(painelPrincipal);
     }

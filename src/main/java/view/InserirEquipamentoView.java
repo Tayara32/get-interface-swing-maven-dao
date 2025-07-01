@@ -10,6 +10,8 @@ import model.Utilizador;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
+import util.IconeUtil;
+
 import java.util.Properties;
 
 
@@ -26,6 +28,7 @@ public class InserirEquipamentoView extends JFrame {
 
     public InserirEquipamentoView(Utilizador utilizador) {
         setTitle("Inserir Equipamento");
+        IconeUtil.aplicarIcone(this);
         setSize(450, 400);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -33,6 +36,7 @@ public class InserirEquipamentoView extends JFrame {
 
         JPanel painel = new JPanel(new GridLayout(8, 2, 12, 10));
         painel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        painel.setBackground(new Color(100, 169, 220, 255));
 
         painel.add(new JLabel("Utilizador: " + utilizador.getUtilizador()));
         painel.add(new JLabel("Perfil: " + utilizador.getPerfil_id()));
