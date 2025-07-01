@@ -92,9 +92,11 @@ O sistema foi desenvolvido em **Java**, utilizando **Swing** para a interface gr
 
 > Abaixo estão algumas imagens da interface desenvolvida com Java Swing.
 
-🖼️ *[Inserir aqui screenshot da tela de login]*  
-🖼️ *[Inserir aqui screenshot do registo de equipamento]*  
-🖼️ *[Inserir aqui screenshot da listagem ]*
+![Login](assets/images/login.png)
+
+![Inserir Equipamentos](assets/images/inserir.png)
+
+![Listar Equipamentos](assets/images/listar.png)
 
 ---
 
