@@ -28,7 +28,7 @@ public class LoginView extends JFrame {
         tituloLabel.setFont(new Font(tituloLabel.getFont().getFontName(), Font.BOLD, 24));
         titulo.add(tituloLabel);
         titulo.setBackground(new Color(100, 169, 220, 255));
-        tituloLabel.setForeground(new Color(255,100,50));
+        tituloLabel.setForeground(new Color(219, 47, 3));
 
         ImageIcon logoOriginal = new ImageIcon(getClass().getResource("/assets/images/icone.png"));
         Image imagemRedimensionada = logoOriginal.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
