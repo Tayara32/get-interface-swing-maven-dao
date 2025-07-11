@@ -5,6 +5,7 @@ public class Utilizador {
     private int id;
     private String utilizador;
     private String palavraChave;
+    private String nome;
     private int perfil_id;
 
     public Utilizador() {}
@@ -50,7 +51,23 @@ public class Utilizador {
         return utilizador != null && !utilizador.isEmpty()
                 && palavraChave != null && !palavraChave.isEmpty();
     }
+    /**
+     * Obtém o nome completo do utilizador
+     *
+     * @return nome
+     */
+    public String getNome() {
+        return nome;
+    }
 
+    /**
+     * Define o nome do utilizador
+     *
+     * @param nome texto do nome
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
 
 }

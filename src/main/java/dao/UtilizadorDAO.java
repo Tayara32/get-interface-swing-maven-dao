@@ -47,6 +47,29 @@ public class UtilizadorDAO {
             e.printStackTrace();
         }
 
+
         return null; // Autenticação falhou
     }
-}
+    public Utilizador obterUtilizador (String utilizador) {
+        Utilizador u = null;
+        try (Connection con = ConexaoBD.obterLigacao()) {
+            String sql =  "SELECT * FROM utilizador WHERE utilizador = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, utilizador);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                u = new Utilizador();
+                u.setId(rs.getInt("id"));
+                u.setNome(rs.getString("nome"));
+                u.setUtilizador(rs.getString("utilizador"));
+                u.setPalavraChave(rs.getString("palavra_chave"));
+                u.setPerfil_id(rs.getInt("perfil_id"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return u;
+
+        }
+    }
+

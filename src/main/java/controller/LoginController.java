@@ -3,7 +3,7 @@ package controller;
 import dao.UtilizadorDAO;
 import model.Utilizador;
 import view.LoginView;
-import view.InterfaceWidgetsView;
+import service.PasswordEncryptionService;
 
 import javax.swing.*;
 
@@ -15,6 +15,7 @@ public class LoginController {
         loginView = new LoginView(this); // Passa referência ao controlador
         loginView.setVisible(true);
 
+
         loginView.getBtnEntrar().addActionListener(_ -> {
             Utilizador credenciais = loginView.getDadosLogin();
 
@@ -24,22 +25,26 @@ public class LoginController {
             }
 
             UtilizadorDAO dao = new UtilizadorDAO();
-            Utilizador utilizadorAutenticado = dao.autenticar(credenciais);
+            Utilizador u = dao.obterUtilizador(credenciais.getUtilizador());
 
-            if (utilizadorAutenticado != null) {
+            if (u != null && PasswordEncryptionService.verifyPassword(credenciais.getPalavraChave(), u.getPalavraChave())) {
+
                 JOptionPane.showMessageDialog(loginView, "Login bem-sucedido!");
                 loginView.dispose();
-                new MenuController(utilizadorAutenticado);
+                new MenuController(u);
+
             } else {
                 JOptionPane.showMessageDialog(loginView, "Credenciais inválidas.");
             }
         });
     }
 
-    // Método chamado pelo botão adicional para abrir a interface de widgets
-    public void abrirInterfaceExemplo() {
-        new InterfaceWidgetsView(loginView); // Passa a referência da janela login
-        loginView.setVisible(false);         // Esconde temporariamente
-    }
-
 }
+
+
+//    // Método chamado pelo botão adicional para abrir a interface de widgets
+//    public void abrirInterfaceExemplo() {
+//        new InterfaceWidgetsView(loginView); // Passa a referência da janela login
+//        loginView.setVisible(false);         // Esconde temporariamente
+//    }
+
