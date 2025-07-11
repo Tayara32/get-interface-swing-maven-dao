@@ -11,14 +11,17 @@ public class MenuController {
 
     public MenuController(Utilizador utilizadorLogado) {
         this.utilizadorLogado = utilizadorLogado;
-        menuView = new MenuView();
+        menuView = new MenuView(utilizadorLogado);
         menuView.setVisible(true);
 
         // Botão "Inserir Equipamento"
-        menuView.getBtnInserir().addActionListener(e -> {
-            menuView.dispose(); // Fecha o menu atual
-            new InserirController(utilizadorLogado); // Abre a janela de inserção (controlador responsável)
-        });
+        if (utilizadorLogado.getPerfil_id() == 1) {
+            menuView.getBtnInserir().addActionListener(e -> {
+                menuView.dispose(); // Fecha o menu atual
+                new InserirController(utilizadorLogado); // Abre a janela de inserção (controlador responsável)
+            });
+
+        }
 
         // Botão "Listar Equipamentos"
         menuView.getBtnListar().addActionListener(e -> {
