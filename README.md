@@ -5,7 +5,7 @@ Projeto final da UFCD 0816 – Programação de Sistemas Distribuídos em Java.
 **Equipa:**  
 Hugo Hall Pereira, José Loureiro Dias, Marcos Matos Silva, Maria Izadora Alcântara, Tayara Gomes da Cruz  
 **Formador:** Nuno Luís Rodrigues Aleixo Silva  
-**Data:** Julho de 2026
+**Data:** Julho de 2025
 
 ---
 
